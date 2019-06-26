@@ -13,8 +13,8 @@ spec:
         app: myapp
     spec:
       containers:
-      - name: aksforspringapplication
-        image: acrsample1.azurecr.io/bhanu9505508737/aksforspringapplication:#{Build.BuildId}#
+      - name: myapp
+        image: acrsample1.azurecr.io/bhanu9505508737/myapp:#{Build.BuildId}#
         ports:
         - containerPort: 80
         env:
