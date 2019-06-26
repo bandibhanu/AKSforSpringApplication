@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: AKSforSpringApplication-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: AKSforSpringApplication
+  template:
+    metadata:
+      labels:
+        app: AKSforSpringApplication
+    spec:
+      containers:
+      - name: AKSforSpringApplication
+        image: acrsample1.azurecr.io/bhanu9505508737/AKSforSpringApplication:#{Build.BuildId}#
+        ports:
+        - containerPort: 80
+        env:
+          - name: PODNAME
+            valueFrom:
+              fieldRef:
+                fieldPath: metadata.name
+      imagePullSecrets:
+      - name: akslogg
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: AKSforSpringApplication
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+  selector:
+    app: AKSforSpringApplication
