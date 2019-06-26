@@ -23,7 +23,7 @@ spec:
               fieldRef:
                 fieldPath: metadata.name
       imagePullSecrets:
-      - name: akslogg
+      - name: bhanu97
 ---
 apiVersion: v1
 kind: Service
