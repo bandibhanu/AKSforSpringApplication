@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: AKSforSpringApplication-deployment
+  name: aksforspringapplication-deployment
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: AKSforSpringApplication
+      app: aksforspringapplication
   template:
     metadata:
       labels:
-        app: AKSforSpringApplication
+        app: aksforspringapplication
     spec:
       containers:
-      - name: AKSforSpringApplication
-        image: acrsample1.azurecr.io/bhanu9505508737/AKSforSpringApplication:#{Build.BuildId}#
+      - name: aksforspringapplication
+        image: acrsample1.azurecr.io/bhanu9505508737/aksforspringapplication:#{Build.BuildId}#
         ports:
         - containerPort: 80
         env:
@@ -28,10 +28,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: AKSforSpringApplication
+  name: aksforspringapplication
 spec:
   type: LoadBalancer
   ports:
   - port: 80
   selector:
-    app: AKSforSpringApplication
+    app: aksforspringapplication
