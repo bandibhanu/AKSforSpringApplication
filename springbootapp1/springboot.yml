@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: aksforspringapplication-deployment
+  name: myapp-deployment
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: aksforspringapplication
+      app: myapp
   template:
     metadata:
       labels:
-        app: aksforspringapplication
+        app: myapp
     spec:
       containers:
       - name: aksforspringapplication
@@ -28,10 +28,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: aksforspringapplication
+  name: myapp
 spec:
   type: LoadBalancer
   ports:
   - port: 80
   selector:
-    app: aksforspringapplication
+    app: myapp
